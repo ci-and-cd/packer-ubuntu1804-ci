@@ -1,0 +1,28 @@
+---
+- hosts: all
+  become: yes
+  gather_facts: yes
+
+  roles:
+    - geerlingguy.nfs
+    - geerlingguy.packer-debian
+
+  tasks:
+    - apt: "name={{ item }} state=installed"
+      with_items:
+        - git
+        - wget
+        - curl
+        - vim
+        - openssh-server
+        - rsync
+        - xinetd
+        - policykit-1
+        - apt-transport-https
+        - aria2
+        - ca-certificates
+        - gnupg2
+        - id-utils
+        - net-tools
+        - software-properties-common
+        - unzip
